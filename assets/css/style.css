@@ -1,0 +1,25 @@
+.background {
+    background: url(../images/got-bg-img.jpg);
+    background-size: 100%;
+    border: 2px solid black;   
+}
+#container {
+    background:rgba(255,255,255,0.75);
+    margin: 50px;
+    height: 500px;  
+}
+h1 {
+    margin: 5%;
+    font-weight: bold;
+    color: #000;
+}
+
+@font-face {
+    font-family: 'thronesfont';
+    src: url('../thronesfont.ttf');
+}
+#titletext {
+    font-family: "thronesfont";
+
+}
+
