@@ -5,7 +5,6 @@ var wrongAnsw = 0;
 var unAnswd = 0;
 var timeLeft = 75;
 var intID;
-// var songPlay = document.getElementById("#themesong")
 
 var trivQnA = [{
         q: "What is are the words of house Stark?",
@@ -52,14 +51,19 @@ var trivQnA = [{
     console.log("javascript is running");
 
 function gameStart(){
-    $("#slideshow").toggle();
+    $("#qna").toggle();
     console.log("Let the games begin!")
     $("#start").toggle();
     $("#submit").toggle();
     $("timer").toggle();
+    $(qstnDisplay);
 };
 function qstnDisplay() {
-
+    $("#questions").empty();
+    for (i = 0; i < trivQnA.length; i++) {
+    $("#questions").append("<h5> " + trivQnA[i].q + "</h5>");
+    
+}
     
 }
 
