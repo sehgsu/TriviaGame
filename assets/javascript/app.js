@@ -55,14 +55,14 @@ function gameStart(){
     console.log("Let the games begin!")
     $("#start").toggle();
     $("#submit").toggle();
-    $("timer").toggle();
+    $("#timer").toggle();
     $(qstnDisplay);
 };
 function qstnDisplay() {
     $("#questions").empty();
     for (i = 0; i < trivQnA.length; i++) {
-    $("#questions").append("<h5> " + trivQnA[i].q + "</h5>");
-    
+    $("#questions").append("<h5> " + trivQnA[i].q + '</h5><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions' + [i] + '" id="inlineRadio1' + [i] + '" value="option1"><label class="form-check-label" for="inlineRadio1' + [i] + '">' + trivQnA[i].choices[0] + '</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions' + [i] + '" id="inlineRadio2' + [i] + '" value="option2"><label class="form-check-label" for="inlineRadio2' + [i] + '">' + trivQnA[i].choices[1] + '</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions' + [i] + '" id="inlineRadio3' + [i] + '" value="option3"><label class="form-check-label" for="inlineRadio3' + [i] + '">' + trivQnA[i].choices[2] + '</label></div>');
+
 }
     
 }
