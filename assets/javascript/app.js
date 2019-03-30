@@ -1,7 +1,7 @@
 var corAnsw = 0;
 var wrongAnsw = 0;
 var unAnsw = 0;
-var timeLeft = 5;
+var timeLeft = 47;
 var intID;
 var trivQnA = [{
         q: "What is are the words of house Stark?",
@@ -93,6 +93,18 @@ $(document).ready(function(){
     });
 });
 
+// $("#restart").click(function(){
+//     console.log("another working button");
+//     $("#restart").toggle();
+//     $("#start").toggle();
+//     $("#qna").toggle();
+//     $("#results").toggle();
+//     corAnsw = 0;
+//     unAnsw = 0;
+//     wrongAnsw = 0;
+//     timeLeft = 47;
+//     gameStart();
+// })
 
 function runTime() {
     timeLeft--;
@@ -109,7 +121,9 @@ function endGame() {
     $("#questions").toggle();
     $("#restart").toggle();
     clearInterval(intID);
-
 }
+
+
+
 
 
