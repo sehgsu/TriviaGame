@@ -67,7 +67,7 @@ function qstnDisplay() {
 }
 function grading() {
     for (i = 0; i < trivQnA.length; i++) {
-        var userPick = $("input:radio[name='inlineRadioOptions" + [i] + "']:checked").parent().text()
+        var userPick = $("input:radio[name='inlineRadioOptions" + [i] + "']:checked").parent().text();
         if (userPick === trivQnA[i].a) {
             corAnsw++;
         }
@@ -99,18 +99,16 @@ function runTime() {
     $("#timer").html("<h2><u>Time Left: " + timeLeft + "</u></h2>");
     if (timeLeft === 0) {
         $(endGame);
-        $("#questions").hide();
         $("#timer").html("<h2><u>Times up!</u></h2>")
     }
 }
 function endGame() {
-    $(grading);
-        event.preventDefault();
-        console.log("Thank you for playing, play again?")
-        $("#submit").toggle();
-        $("#questions").toggle();
-        $("#restart").toggle();
-        clearInterval(intID);
+    grading ();
+    console.log("Thank you for playing, play again?")
+    $("#submit").toggle();
+    $("#questions").toggle();
+    $("#restart").toggle();
+    clearInterval(intID);
 
 }
 
