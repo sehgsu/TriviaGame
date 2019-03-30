@@ -1,9 +1,7 @@
-
-var currentQ = 0;
 var corAnsw = 0;
 var wrongAnsw = 0;
 var unAnsw = 0;
-var timeLeft = 75;
+var timeLeft = 5;
 var intID;
 var trivQnA = [{
         q: "What is are the words of house Stark?",
@@ -50,19 +48,15 @@ var trivQnA = [{
     console.log("javascript is running");
 function gameStart(){
     $("#qna").toggle();
+    $("#questions").toggle();
     console.log("Let the games begin!")
     $(qstnDisplay);
     $("#start").toggle();
     $("#submit").toggle();
     $("#timer").toggle();
-    $("#submit").click(function(){
-        $(grading);
-        event.preventDefault();
-        console.log("Thank you for playing, play again?")
-        $("#submit").toggle();
-        $("#questions").hide();
-        $("#restart").toggle();
-})
+    $("#submit").click(endGame);
+    clearInterval(intID);
+    intID = setInterval(runTime, 1000)
 };
 function qstnDisplay() {
     $("#questions").empty();
@@ -73,10 +67,11 @@ function qstnDisplay() {
 }
 function grading() {
     for (i = 0; i < trivQnA.length; i++) {
-        if ($("input:radio[name='inlineRadioOptions" + [i] + "']:checked").parent().text() === trivQnA[i].a) {
+        var userPick = $("input:radio[name='inlineRadioOptions" + [i] + "']:checked").parent().text()
+        if (userPick === trivQnA[i].a) {
             corAnsw++;
         }
-        else if ($("input:radio[name='inlineRadioOptions" + [i] + "']:checked").parent().text().length === 0) {
+        else if (userPick.length === 0) {
         unAnsw++;
         } 
         else {
@@ -91,15 +86,31 @@ function grading() {
     
 }
 $(document).ready(function(){
-$("#start").click(function(){
-    event.preventDefault();
-    console.log("button works");
-    $(gameStart);
-});
+    $("#start").click(function(){
+        event.preventDefault();
+        console.log("button works");
+        $(gameStart);
+    });
 });
 
 
 function runTime() {
+    timeLeft--;
+    $("#timer").html("<h2><u>Time Left: " + timeLeft + "</u></h2>");
+    if (timeLeft === 0) {
+        $(endGame);
+        $("#questions").hide();
+        $("#timer").html("<h2><u>Times up!</u></h2>")
+    }
+}
+function endGame() {
+    $(grading);
+        event.preventDefault();
+        console.log("Thank you for playing, play again?")
+        $("#submit").toggle();
+        $("#questions").toggle();
+        $("#restart").toggle();
+        clearInterval(intID);
 
 }
 

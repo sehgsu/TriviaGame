@@ -5,9 +5,8 @@
 * √ set up js arrays for questions and answers
 * √ set up functions for game start, 
 * set up functions for timers, 
-* √ set up functions for slideshow,
-* √ set up functions for questions
-* √ if statements for choosing the right answers
+* √ set up function for questions
+* √ set up grading function with if statements for choosing the right answers
 * else statement for time running out 
 * game restart function
 
