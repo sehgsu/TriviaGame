@@ -1,15 +1,14 @@
 
 var currentQ = 0;
-var correctAnsw = 0;
+var corAnsw = 0;
 var wrongAnsw = 0;
-var unAnswd = 0;
+var unAnsw = 0;
 var timeLeft = 75;
 var intID;
-
 var trivQnA = [{
         q: "What is are the words of house Stark?",
         choices: ["Fierce like the wolves", "Our's is the fury", "Winter is coming"],
-        a: "Winter is coming."},
+        a: "Winter is coming"},
         {
         q: "What is the sigil of house Stark?",
         choices: ["A direwolf", "A bear", "A werewolf"],
@@ -25,7 +24,7 @@ var trivQnA = [{
         {
         q: "What are the words of house Baratheon?",
         choices: ["Our's is the fury", "Heavy is the crown", "Bend the knee"],
-        a: "Out's is the fury"},
+        a: "Our's is the fury"},
         {
         q: "What is the sigil of house Baratheon?",
         choices: ["A dothraki horde", "A black stag", "A boar"],
@@ -49,31 +48,59 @@ var trivQnA = [{
         a: "We do not sow"},
     ];
     console.log("javascript is running");
-
 function gameStart(){
     $("#qna").toggle();
     console.log("Let the games begin!")
+    $(qstnDisplay);
     $("#start").toggle();
     $("#submit").toggle();
     $("#timer").toggle();
-    $(qstnDisplay);
+    $("#submit").click(function(){
+        $(grading);
+        event.preventDefault();
+        console.log("Thank you for playing, play again?")
+        $("#submit").toggle();
+        $("#questions").hide();
+        $("#restart").toggle();
+})
 };
 function qstnDisplay() {
     $("#questions").empty();
     for (i = 0; i < trivQnA.length; i++) {
-    $("#questions").append("<h5> " + trivQnA[i].q + '</h5><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions' + [i] + '" id="inlineRadio1' + [i] + '" value="option1"><label class="form-check-label" for="inlineRadio1' + [i] + '">' + trivQnA[i].choices[0] + '</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions' + [i] + '" id="inlineRadio2' + [i] + '" value="option2"><label class="form-check-label" for="inlineRadio2' + [i] + '">' + trivQnA[i].choices[1] + '</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions' + [i] + '" id="inlineRadio3' + [i] + '" value="option3"><label class="form-check-label" for="inlineRadio3' + [i] + '">' + trivQnA[i].choices[2] + '</label></div>');
-
+        $("#questions").append("<h5> " + trivQnA[i].q + '</h5><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions' + [i] + '" id="inlineRadio1' + [i] + '" value="option1"><label class="form-check-label" for="inlineRadio1' + [i] + '">' + trivQnA[i].choices[0] + '</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions' + [i] + '" id="inlineRadio2' + [i] + '" value="option2"><label class="form-check-label" for="inlineRadio2' + [i] + '">' + trivQnA[i].choices[1] + '</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions' + [i] + '" id="inlineRadio3' + [i] + '" value="option3"><label class="form-check-label" for="inlineRadio3' + [i] + '">' + trivQnA[i].choices[2] + '</label></div>');
+  
+}   
 }
+function grading() {
+    for (i = 0; i < trivQnA.length; i++) {
+        if ($("input:radio[name='inlineRadioOptions" + [i] + "']:checked").parent().text() === trivQnA[i].a) {
+            corAnsw++;
+        }
+        else if ($("input:radio[name='inlineRadioOptions" + [i] + "']:checked").parent().text().length === 0) {
+        unAnsw++;
+        } 
+        else {
+        wrongAnsw++;
+        }
+    }
+    $("#results").html("<h3><u> Results </u></h3><br><h4><u>Correct: " + corAnsw + "</u></h4><br><h4><u>Incorrect: " + wrongAnsw + "</u></h4><br><h4><u>Unanswered: " + unAnsw + "</u></h4>")
+    console.log("correct: " + corAnsw);
+    console.log("unanswered: " + unAnsw);
+    console.log("wrong: " + wrongAnsw);
+    
     
 }
-
 $(document).ready(function(){
 $("#start").click(function(){
     event.preventDefault();
     console.log("button works");
     $(gameStart);
 });
-
 });
-   
+
+
+function runTime() {
+
+}
+
 
